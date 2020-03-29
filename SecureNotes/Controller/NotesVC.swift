@@ -29,6 +29,15 @@ class NotesVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        pushNote(for: indexPath)
+    }
+    
+    func pushNote(for indexPath: IndexPath) {
+        guard let noteDetailVC = storyboard?.instantiateViewController(withIdentifier: "NoteDetailVC") as? NoteDetailVC else { return }
+        noteDetailVC.note = notes[indexPath.row]
+        navigationController?.pushViewController(noteDetailVC, animated: true)
+    }
 
 }
 

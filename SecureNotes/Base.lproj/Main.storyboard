@@ -88,7 +88,7 @@
         <!--Note DetailVC-->
         <scene sceneID="JSA-Ym-VYY">
             <objects>
-                <viewController id="27u-1w-6Jr" customClass="NoteDetailVC" customModule="SecureNotes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NoteDetailVC" id="27u-1w-6Jr" customClass="NoteDetailVC" customModule="SecureNotes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3qu-h6-ug8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

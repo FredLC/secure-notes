@@ -10,14 +10,19 @@ import UIKit
 
 class NoteDetailVC: UIViewController, UITextViewDelegate {
     
-    
     @IBOutlet weak var textView: UITextView!
+    
+    var note: Note?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         textView.delegate = self
-        textView.text = "Write something..."
-        textView.textColor = UIColor.lightGray
+        textView.text = note?.message ?? "Write something..."
+        if (note?.message == nil) {
+            textView.textColor = UIColor.lightGray
+        } else {
+            textView.textColor = UIColor.black
+        }
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -34,6 +39,8 @@ class NoteDetailVC: UIViewController, UITextViewDelegate {
     }
 
     @IBAction func lockNotePressed(_ sender: Any) {
+        note?.lockStatus = .locked
+        navigationController?.popViewController(animated: true)
     }
     
 }
