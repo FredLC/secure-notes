@@ -18,6 +18,7 @@
 		48CF6D5324310EE800CFF18C /* NotesObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CF6D5224310EE800CFF18C /* NotesObjects.swift */; };
 		48CF6D56243113CE00CFF18C /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CF6D55243113CE00CFF18C /* NoteCell.swift */; };
 		48CF6D582431168000CFF18C /* NoteDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CF6D572431168000CFF18C /* NoteDetailVC.swift */; };
+		48E42F1E24312B0600C708E2 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E42F1D24312B0600C708E2 /* Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		48CF6D5224310EE800CFF18C /* NotesObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesObjects.swift; sourceTree = "<group>"; };
 		48CF6D55243113CE00CFF18C /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		48CF6D572431168000CFF18C /* NoteDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailVC.swift; sourceTree = "<group>"; };
+		48E42F1D24312B0600C708E2 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				48CF6D5224310EE800CFF18C /* NotesObjects.swift */,
+				48E42F1D24312B0600C708E2 /* Helpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				48CF6D4D24310E6000CFF18C /* LockStatus.swift in Sources */,
 				48CF6D5324310EE800CFF18C /* NotesObjects.swift in Sources */,
 				48CF6D382431087100CFF18C /* NotesVC.swift in Sources */,
+				48E42F1E24312B0600C708E2 /* Helpers.swift in Sources */,
 				48CF6D362431087100CFF18C /* AppDelegate.swift in Sources */,
 				48CF6D56243113CE00CFF18C /* NoteCell.swift in Sources */,
 				48CF6D3E2431087100CFF18C /* SecureNotes.xcdatamodeld in Sources */,

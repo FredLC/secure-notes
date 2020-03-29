@@ -70,6 +70,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="SecureNotes" id="3b7-ns-jAs">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="V1d-rW-8dW"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="7NV-on-PdD">
                             <color key="tintColor" red="0.91764705879999997" green="0.66274509800000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
