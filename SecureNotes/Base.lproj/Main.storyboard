@@ -72,6 +72,9 @@
                     <navigationItem key="navigationItem" title="SecureNotes" id="3b7-ns-jAs">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="7NV-on-PdD">
                             <color key="tintColor" red="0.91764705879999997" green="0.66274509800000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="27u-1w-6Jr" kind="show" id="OoH-fa-aGj"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -82,6 +85,54 @@
             </objects>
             <point key="canvasLocation" x="1021.7391304347827" y="134.59821428571428"/>
         </scene>
+        <!--Note DetailVC-->
+        <scene sceneID="JSA-Ym-VYY">
+            <objects>
+                <viewController id="27u-1w-6Jr" customClass="NoteDetailVC" customModule="SecureNotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3qu-h6-ug8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Nl9-24-fmO">
+                                <rect key="frame" x="20" y="170" width="374" height="636"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="34Z-6e-I5h">
+                                <rect key="frame" x="20" y="806" width="374" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="hi5-6e-1ZY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="LOCK NOTE">
+                                    <color key="titleColor" red="0.91764705879999997" green="0.66274509800000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="lockNotePressed:" destination="27u-1w-6Jr" eventType="touchUpInside" id="m32-EB-gRd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="CFj-iC-afP" firstAttribute="trailing" secondItem="Nl9-24-fmO" secondAttribute="trailing" constant="20" id="2eq-Wi-UkJ"/>
+                            <constraint firstItem="34Z-6e-I5h" firstAttribute="leading" secondItem="CFj-iC-afP" secondAttribute="leading" constant="20" id="CfS-9q-JX2"/>
+                            <constraint firstItem="Nl9-24-fmO" firstAttribute="top" secondItem="CFj-iC-afP" secondAttribute="top" constant="30" id="Fuy-TH-N8f"/>
+                            <constraint firstAttribute="bottom" secondItem="34Z-6e-I5h" secondAttribute="bottom" constant="50" id="b3g-Ru-Xag"/>
+                            <constraint firstItem="CFj-iC-afP" firstAttribute="trailing" secondItem="34Z-6e-I5h" secondAttribute="trailing" constant="20" id="f4a-ct-C72"/>
+                            <constraint firstItem="34Z-6e-I5h" firstAttribute="top" secondItem="Nl9-24-fmO" secondAttribute="bottom" id="hcZ-yg-6et"/>
+                            <constraint firstItem="Nl9-24-fmO" firstAttribute="leading" secondItem="CFj-iC-afP" secondAttribute="leading" constant="20" id="nPL-Zn-7Pd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CFj-iC-afP"/>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="Nl9-24-fmO" id="Gfc-n0-omz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Wp-um-faZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1776.8115942028987" y="134.59821428571428"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="gIy-vX-OFx">
             <objects>
@@ -90,8 +141,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="54U-wq-ZIa">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.91764705879999997" green="0.66274509800000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.91764705879999997" green="0.66274509800000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" red="0.91764705882352937" green="0.66274509803921566" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
