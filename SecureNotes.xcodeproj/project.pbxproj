@@ -13,6 +13,9 @@
 		48CF6D3E2431087100CFF18C /* SecureNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 48CF6D3C2431087100CFF18C /* SecureNotes.xcdatamodeld */; };
 		48CF6D402431087400CFF18C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48CF6D3F2431087400CFF18C /* Assets.xcassets */; };
 		48CF6D432431087400CFF18C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48CF6D412431087400CFF18C /* LaunchScreen.storyboard */; };
+		48CF6D4D24310E6000CFF18C /* LockStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CF6D4C24310E6000CFF18C /* LockStatus.swift */; };
+		48CF6D5024310E8600CFF18C /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CF6D4F24310E8600CFF18C /* Note.swift */; };
+		48CF6D5324310EE800CFF18C /* NotesObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CF6D5224310EE800CFF18C /* NotesObjects.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		48CF6D3F2431087400CFF18C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48CF6D422431087400CFF18C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48CF6D442431087400CFF18C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48CF6D4C24310E6000CFF18C /* LockStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockStatus.swift; sourceTree = "<group>"; };
+		48CF6D4F24310E8600CFF18C /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		48CF6D5224310EE800CFF18C /* NotesObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesObjects.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,9 @@
 		48CF6D342431087100CFF18C /* SecureNotes */ = {
 			isa = PBXGroup;
 			children = (
+				48CF6D5124310ED100CFF18C /* Helpers */,
+				48CF6D4B24310E5400CFF18C /* Enums */,
+				48CF6D4E24310E7300CFF18C /* Model */,
 				48CF6D4A2431088000CFF18C /* Controller */,
 				48CF6D352431087100CFF18C /* AppDelegate.swift */,
 				48CF6D392431087100CFF18C /* Main.storyboard */,
@@ -73,6 +82,30 @@
 				48CF6D372431087100CFF18C /* NotesVC.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		48CF6D4B24310E5400CFF18C /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				48CF6D4C24310E6000CFF18C /* LockStatus.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		48CF6D4E24310E7300CFF18C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				48CF6D4F24310E8600CFF18C /* Note.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		48CF6D5124310ED100CFF18C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				48CF6D5224310EE800CFF18C /* NotesObjects.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +179,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48CF6D5024310E8600CFF18C /* Note.swift in Sources */,
+				48CF6D4D24310E6000CFF18C /* LockStatus.swift in Sources */,
+				48CF6D5324310EE800CFF18C /* NotesObjects.swift in Sources */,
 				48CF6D382431087100CFF18C /* NotesVC.swift in Sources */,
 				48CF6D362431087100CFF18C /* AppDelegate.swift in Sources */,
 				48CF6D3E2431087100CFF18C /* SecureNotes.xcdatamodeld in Sources */,
