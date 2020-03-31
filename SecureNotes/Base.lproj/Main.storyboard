@@ -95,7 +95,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Nl9-24-fmO">
-                                <rect key="frame" x="20" y="170" width="374" height="636"/>
+                                <rect key="frame" x="20" y="170" width="374" height="556"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -113,15 +113,34 @@
                                     <action selector="lockNotePressed:" destination="27u-1w-6Jr" eventType="touchUpInside" id="m32-EB-gRd"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D59-Fc-vnf">
+                                <rect key="frame" x="20" y="726" width="374" height="40"/>
+                                <color key="backgroundColor" red="0.91764705879999997" green="0.66274509800000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="k0P-Pr-aCg"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="sJQ-1I-LzJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="SAVE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="lockNotePressed:" destination="27u-1w-6Jr" eventType="touchUpInside" id="Htg-cN-TlY"/>
+                                    <action selector="saveButtonPressed:" destination="27u-1w-6Jr" eventType="touchUpInside" id="s4N-mV-nK3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="CFj-iC-afP" firstAttribute="trailing" secondItem="Nl9-24-fmO" secondAttribute="trailing" constant="20" id="2eq-Wi-UkJ"/>
                             <constraint firstItem="34Z-6e-I5h" firstAttribute="leading" secondItem="CFj-iC-afP" secondAttribute="leading" constant="20" id="CfS-9q-JX2"/>
                             <constraint firstItem="Nl9-24-fmO" firstAttribute="top" secondItem="CFj-iC-afP" secondAttribute="top" constant="30" id="Fuy-TH-N8f"/>
+                            <constraint firstItem="34Z-6e-I5h" firstAttribute="top" secondItem="D59-Fc-vnf" secondAttribute="bottom" constant="40" id="UDh-Hp-pXm"/>
+                            <constraint firstItem="D59-Fc-vnf" firstAttribute="top" secondItem="Nl9-24-fmO" secondAttribute="bottom" id="Ywr-Mw-4n5"/>
                             <constraint firstAttribute="bottom" secondItem="34Z-6e-I5h" secondAttribute="bottom" constant="50" id="b3g-Ru-Xag"/>
+                            <constraint firstItem="CFj-iC-afP" firstAttribute="trailing" secondItem="D59-Fc-vnf" secondAttribute="trailing" constant="20" id="b7o-on-15e"/>
+                            <constraint firstItem="D59-Fc-vnf" firstAttribute="leading" secondItem="CFj-iC-afP" secondAttribute="leading" constant="20" id="cRE-9q-cAx"/>
                             <constraint firstItem="CFj-iC-afP" firstAttribute="trailing" secondItem="34Z-6e-I5h" secondAttribute="trailing" constant="20" id="f4a-ct-C72"/>
-                            <constraint firstItem="34Z-6e-I5h" firstAttribute="top" secondItem="Nl9-24-fmO" secondAttribute="bottom" id="hcZ-yg-6et"/>
                             <constraint firstItem="Nl9-24-fmO" firstAttribute="leading" secondItem="CFj-iC-afP" secondAttribute="leading" constant="20" id="nPL-Zn-7Pd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CFj-iC-afP"/>

@@ -13,6 +13,8 @@ class NotesVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var notesCoreData: [NoteCoreData] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -21,26 +23,35 @@ class NotesVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        getNotes()
         tableView.reloadData()
+    }
+    
+    func getNotes() {
+        guard let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else { return }
+        if let notesFromCoreData = try? context.fetch(NoteCoreData.fetchRequest()) {
+            guard let notes = notesFromCoreData as? [NoteCoreData] else { return }
+            notesCoreData = notes
+        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return notes.count
+        return notesCoreData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "noteCell", for: indexPath) as? NoteCell else { return UITableViewCell() }
-        let note = notes[indexPath.row]
+        let note = notesCoreData[indexPath.row]
         cell.configureCell(note: note)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if notes[indexPath.row].lockStatus == .locked {
+        if notesCoreData[indexPath.row].isLocked == true {
             authenticateBiometrics { (authenticated) in
                 if authenticated {
-                    let noteLockStatus = notes[indexPath.row].lockStatus
-                    notes[indexPath.row].lockStatus = lockStatusFlipper(lockStatus: noteLockStatus)
+                    let noteLockStatus = self.notesCoreData[indexPath.row].isLocked
+                    self.notesCoreData[indexPath.row].isLocked = lockStatusFlipper(lockStatus: noteLockStatus)
                     DispatchQueue.main.async {
                         self.pushNote(for: indexPath)
                     }
@@ -51,9 +62,20 @@ class NotesVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else { return }
+            let note = notesCoreData[indexPath.row]
+            context.delete(note)
+            (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+            notesCoreData.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
     func pushNote(for indexPath: IndexPath) {
         guard let noteDetailVC = storyboard?.instantiateViewController(withIdentifier: "NoteDetailVC") as? NoteDetailVC else { return }
-        noteDetailVC.note = notes[indexPath.row]
+        noteDetailVC.note = notesCoreData[indexPath.row]
         navigationController?.pushViewController(noteDetailVC, animated: true)
     }
     

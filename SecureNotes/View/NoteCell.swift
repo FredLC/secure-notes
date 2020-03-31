@@ -14,8 +14,8 @@ class NoteCell: UITableViewCell {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var lockImage: UIImageView!
     
-    func configureCell(note: Note) {
-        if (note.lockStatus == .locked) {
+    func configureCell(note: NoteCoreData) {
+        if (note.isLocked == true) {
             lockImage.isHidden = false
             messageLabel.text = "This message is locked. Unlock to read."
         } else {

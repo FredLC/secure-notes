@@ -12,7 +12,7 @@ class NoteDetailVC: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var textView: UITextView!
     
-    var note: Note?
+    var note: NoteCoreData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +26,12 @@ class NoteDetailVC: UIViewController, UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        
+
         if (textView.textColor == UIColor.lightGray) {
             textView.text = nil
             textView.textColor = UIColor.black
         }
-        
+
         if (textView.text == nil) {
             textView.text = "Write something..."
             textView.textColor = UIColor.lightGray
@@ -39,8 +39,18 @@ class NoteDetailVC: UIViewController, UITextViewDelegate {
     }
 
     @IBAction func lockNotePressed(_ sender: Any) {
-        note?.lockStatus = .locked
+        note?.isLocked = true
         navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        guard let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else { return }
+        let newNote = NoteCoreData(context: context)
+        if let message = textView.text {
+            newNote.message = message
+            newNote.isLocked = false
+        }
+        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
     
 }

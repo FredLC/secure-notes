@@ -8,18 +8,11 @@
 
 import Foundation
 
-func isLocked(lockStatus: LockStatus) -> Bool {
-    if lockStatus == .locked {
-        return true
-    } else {
-        return false
-    }
-}
 
-func lockStatusFlipper(lockStatus: LockStatus) -> LockStatus {
-    if lockStatus == .locked {
-        return .unlocked
+func lockStatusFlipper(lockStatus: Bool) -> Bool {
+    if lockStatus == true {
+        return false
     } else {
-        return .locked
+        return true
     }
 }
