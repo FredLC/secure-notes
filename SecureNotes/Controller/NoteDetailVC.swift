@@ -44,13 +44,27 @@ class NoteDetailVC: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
-        guard let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else { return }
-        let newNote = NoteCoreData(context: context)
-        if let message = textView.text {
-            newNote.message = message
-            newNote.isLocked = false
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        if note?.message == nil {
+            guard let context = appDelegate?.persistentContainer.viewContext else { return }
+            let newNote = NoteCoreData(context: context)
+            if textView.text != nil {
+                if let message = textView.text {
+                    newNote.message = message
+                    newNote.isLocked = false
+                }
+                appDelegate?.saveContext()
+            }
+        } else {
+            if textView.text != nil {
+                if let message = textView.text {
+                    note?.message = message
+                    note?.isLocked = false
+                }
+                appDelegate?.saveContext()
+            }
         }
-        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+        
     }
     
 }

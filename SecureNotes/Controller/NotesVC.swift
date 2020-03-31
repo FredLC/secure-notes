@@ -24,7 +24,6 @@ class NotesVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getNotes()
-        tableView.reloadData()
     }
     
     func getNotes() {
@@ -32,6 +31,7 @@ class NotesVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if let notesFromCoreData = try? context.fetch(NoteCoreData.fetchRequest()) {
             guard let notes = notesFromCoreData as? [NoteCoreData] else { return }
             notesCoreData = notes
+            tableView.reloadData()
         }
     }
 
