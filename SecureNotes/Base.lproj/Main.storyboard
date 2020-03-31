@@ -71,12 +71,19 @@
                     </view>
                     <navigationItem key="navigationItem" title="SecureNotes" id="3b7-ns-jAs">
                         <barButtonItem key="backBarButtonItem" title="Back" id="V1d-rW-8dW"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="7NV-on-PdD">
-                            <color key="tintColor" red="0.91764705879999997" green="0.66274509800000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="27u-1w-6Jr" kind="show" id="OoH-fa-aGj"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="7NV-on-PdD">
+                                <color key="tintColor" red="0.91764705879999997" green="0.66274509800000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <segue destination="27u-1w-6Jr" kind="show" id="OoH-fa-aGj"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Lock Everything" id="sVv-7s-Tlb">
+                                <connections>
+                                    <action selector="lockEverythingPressed:" destination="BYZ-38-t0r" id="DWp-Bf-2ZI"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="S0b-q0-aGs" id="KLx-hI-HJJ"/>

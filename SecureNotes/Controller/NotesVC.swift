@@ -13,7 +13,10 @@ class NotesVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
+    let appDelegate = UIApplication.shared.delegate as? AppDelegate
+    
     var notesCoreData: [NoteCoreData] = []
+    var isEverythingLocked: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,10 +30,11 @@ class NotesVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func getNotes() {
-        guard let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else { return }
+        guard let context = appDelegate?.persistentContainer.viewContext else { return }
         if let notesFromCoreData = try? context.fetch(NoteCoreData.fetchRequest()) {
             guard let notes = notesFromCoreData as? [NoteCoreData] else { return }
             notesCoreData = notes
+            notesCoreData.reverse()
             tableView.reloadData()
         }
     }
@@ -64,10 +68,10 @@ class NotesVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            guard let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else { return }
+            guard let context = appDelegate?.persistentContainer.viewContext else { return }
             let note = notesCoreData[indexPath.row]
             context.delete(note)
-            (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+            appDelegate?.saveContext()
             notesCoreData.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
@@ -112,6 +116,26 @@ class NotesVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         alertVC.addAction(alertAction)
         present(alertVC, animated: true, completion: nil)
     }
+    
+    func flipEveryNoteLockStatus() {
+        for note in self.notesCoreData {
+            let lockStatus = note.isLocked
+            note.isLocked = lockStatusFlipper(lockStatus: lockStatus)
+        }
+    }
 
+    @IBAction func lockEverythingPressed(_ sender: Any) {
+        flipEveryNoteLockStatus()
+        isEverythingLocked = !isEverythingLocked
+        if !isEverythingLocked {
+            authenticateBiometrics { (authenticated) in
+                if authenticated {
+                    self.flipEveryNoteLockStatus()
+                }
+            }
+        }
+        appDelegate?.saveContext()
+        tableView.reloadData()
+    }
 }
 
